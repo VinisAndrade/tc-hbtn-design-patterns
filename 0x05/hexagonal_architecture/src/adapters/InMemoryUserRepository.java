@@ -7,19 +7,18 @@ import java.util.*;
 public class InMemoryUserRepository implements UserRepository {
     private final Map<String, User> database = new HashMap<>();
 
-
-    public void save(User user) 
-    { 
-        //implemente o metodo
+ @Override
+    public void save(User user) {
+        database.put(user.getId(), user);
     }
 
-    public User findById(String id) 
-    { 
-        //implemente o metodo
+    @Override
+    public User findById(String id) {
+        return database.get(id);
     }
 
-    public List<User> findAll() 
-    { 
-        //implemente o metodo
+    @Override
+    public List<User> findAll() {
+        return new ArrayList<>(database.values());
     }
 }
